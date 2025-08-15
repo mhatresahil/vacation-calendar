@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* ---- Design tokens ---- */
+:root {
+  --bg: #0b0d10;
+  --panel: #111317;
+  --panel-2: #161a20;
+  --text: #e7ecf2;
+  --muted: #a8b0bb;
+  --border: rgba(255, 255, 255, 0.12);
+
+  /* Holiday week colors (true greens, not cream) */
+  --week-light: #b8f7c5;          /* light green */
+  --week-dark:  #177245;          /* dark verdant green */
+
+  /* Text contrast on those backgrounds */
+  --week-light-text: #0a2615;     /* very dark green text */
+  --week-dark-text:  #ffffff;     /* pure white text */
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Subtle global scrollbars (optional) */
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+/* ---- Utility helpers for our tokens ---- */
+.bg-week-light { background-color: var(--week-light); }
+.bg-week-dark  { background-color: var(--week-dark); }
+.text-week-light { color: var(--week-light-text); }
+.text-week-dark  { color: var(--week-dark-text); }
+
+/* Card and control styles implemented without @apply to avoid Tailwind v4 @apply variant limits */
+.card {
+  border-radius: 1rem;           /* ~ rounded-2xl */
+  border: 1px solid var(--border);
+  padding: 1rem;                 /* p-4 */
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+@media (min-width: 768px) {
+  .card { padding: 1.25rem; }    /* md:p-5 */
+}
+
+.control {
+  border-radius: 0.75rem;        /* rounded-xl */
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;       /* px-3 py-2 */
+  background: var(--panel);
+  color: var(--text);
+}
+.control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(72,187,120,0.35);
+}
+
+.btn-toggle {
+  padding: 0.5rem 1rem;          /* px-4 py-2 */
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+}
+.btn-toggle-active {
+  background: linear-gradient(180deg, #1d4d2b, #153b21);
+  color: white;
+  border-color: rgba(255,255,255,0.2);
+}
+
+.legend-dot { display:inline-block; width:1rem; height:1rem; border-radius:0.5rem; }
